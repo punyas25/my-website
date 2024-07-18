@@ -1,14 +1,9 @@
-import Image from "next/image";
+import Page from './home/page'
 
-export default function Home() {
+export default function Home () {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between ">
-      <p>Hello</p>
-
-      <div>
-        <p>Credits for icon/assets used</p>
-        <a href="https://www.flaticon.com/free-icons/tangerine" title="tangerine icons">Tangerine icons created by Freepik - Flaticon</a>
-      </div>
+    <main className="flex min-h-screen flex-col items-center justify-between bg-slate-800 text-gray-300 p-5">
+      <Page />
     </main>
-  );
+  )
 }
