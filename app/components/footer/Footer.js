@@ -1,4 +1,4 @@
-import logoImage from "../../public/images/tangerine.png"
+import logoImage from "../../../public/images/tangerine.png"
 import Image from 'next/image'
 import Link from 'next/link'
 
