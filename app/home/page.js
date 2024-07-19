@@ -1,4 +1,5 @@
 import HeroBlock from "../components/common/HeroBlock"
+import ImageGrid from "../components/common/ImageGrid"
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
         link="/"
         linkText="Contact Me"
       />
+      <ImageGrid />
       <div>
         <p>Credits for icon/assets used</p>
         <a href="https://www.flaticon.com/free-icons/tangerine" title="tangerine icons">Tangerine icons created by Freepik - Flaticon</a>
