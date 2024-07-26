@@ -6,59 +6,69 @@ const imgUrl = "https://i.etsystatic.com/30972341/r/il/50bbb0/3733725846/il_570x
 const GalleryGrid = () => {
   const data = [
     {
-      link: "add link here",
+      link: "/gallery/project1",
       image: imgUrl,
-      projectName: "Image projectName 1",
+      projectName: "projectName 1",
       projectDesc: `you can add text with html tag <b>like this  </b>`,
     },
     {
-      link: "add link here",
+      link: "/gallery/project2",
       image: imgUrl,
-      projectName: "Image projectName 2",
+      projectName: "projectName 2",
       projectDesc: `you can add text with html tag <b>like this   </b>`,
     },
     {
-      link: "add link here",
+      link: "/gallery/project3",
       image: imgUrl,
-      projectName: "Image projectName",
+      projectName: "projectName 3",
       projectDesc: `you can add text with html tag <b>like this   </b>`,
     },
     {
-      link: "add link here",
+      link: "/gallery/project4",
       image: imgUrl,
-      projectName: "Image projectName",
+      projectName: "projectName 4",
       projectDesc: `you can add text with html tag <b>like this   </b>`,
     },
     {
-      link: "add link here",
+      link: "/gallery/project5",
       image: imgUrl,
-      projectName: "Image projectName",
+      projectName: "projectName 5",
       projectDesc: `you can add text with html tag <b>like this   </b>`,
     },
     {
-      link: "add link here",
+      link: "/gallery/project6",
       image: imgUrl,
-      projectName: "Image projectName",
+      projectName: "projectName 6",
+      projectDesc: `you can add text with html tag <b>like this   </b>`,
+    },
+    {
+      link: "/gallery/project7",
+      image: imgUrl,
+      projectName: "projectName 7",
+      projectDesc: `you can add text with html tag <b>like this   </b>`,
+    },
+    {
+      link: "/gallery/project8",
+      image: imgUrl,
+      projectName: "projectName 8",
       projectDesc: `you can add text with html tag <b>like this   </b>`,
     },
   ]
 
   return (
     <div className="p-6 container mx-auto">
-      <div className="md:grid md:gap-6 md:grid-cols-2 lg:grid-cols-3 mb-12">
+      <div className="md:grid lg:gap-1 gap-6 md:grid-cols-2 lg:grid-cols-4 mb-12">
         {data.map((x) => {
           return (
             <>
               <article
                 key={x.projectDesc}
-                className="p-6 mb-6 transition duration-300 group rounded-xl cursor-pointer"
+                className="p-4 mb-6 transition duration-300 group rounded-xl cursor-pointer"
               >
                 <Link
                   style={{ backgroundImage: `url(${x.image})` }}
                   className='bg-cover relative flex flex-col justify-center mb-4 rounded-2xl min-w-64 min-h-64 prose'
                   href={x.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
                 >
                   <div className="p-5 z-10">
                     <h2 className="text-gray-200">{x.projectName}</h2>

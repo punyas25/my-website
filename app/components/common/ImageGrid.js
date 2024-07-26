@@ -46,13 +46,13 @@ const ImageGrid = () => {
 
   return (
     <div className="p-6 container mx-auto">
-      <div className="md:grid md:gap-6 md:grid-cols-2 lg:grid-cols-3 mb-12">
+      <div className="md:grid lg:gap-1 gap-6 md:grid-cols-2 lg:grid-cols-4 mb-12">
         {data.map((x) => {
           return (
             <>
               <article
                 key={x.comment}
-                className="p-6 mb-6 transition duration-300 group transform hover:-translate-y-2 rounded-xl cursor-pointer"
+                className="p-4 mb-6 transition duration-300 group transform hover:-translate-y-2 rounded-xl cursor-pointer"
               >
                 <Link
                   href={x.link}
