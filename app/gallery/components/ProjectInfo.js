@@ -1,11 +1,11 @@
 const ProjectInfo = ({ title, content, statistics }) => {
   return (
-    <div className="w-4/6 flex gap-8">
-      <div className="info-col prose text-gray-300 basis-3/4">
+    <div className="w-5/6 grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <div className="info-col prose text-gray-300 col-span-3">
         <h2 className="text-gray-200">{title}</h2>
         <p>{content}</p>
       </div>
-      <div className="prose stats-col flex flex-col text-gray-300 col-span-2 basis-1/4">
+      <div className="prose stats-col flex flex-col text-gray-300 lg:text-right">
         <h3 className="text-gray-200">Project Information</h3>
         <div>
           {statistics.map((statistic) => {
