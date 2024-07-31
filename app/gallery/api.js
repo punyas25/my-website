@@ -1,6 +1,16 @@
 const baseApiUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL
 
-// This might change to fetch only custom images to be displayed on home page
+export const fetchProjectData = async () => {
+  const apiUrl = `${baseApiUrl}/projects-images/get-all-projects-data/`
+  const response = await fetch(apiUrl)
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch Project data and related images")
+  }
+
+  return response.json()
+}
+
 export const fetchProjectsData = async () => {
   const apiUrl = `${baseApiUrl}/projects/get-all-projects-data/`
   const response = await fetch(apiUrl)

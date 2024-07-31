@@ -1,7 +1,32 @@
+"use client"
+
+import { useEffect, useState } from "react"
+
 import GalleryGrid from "./components/GalleryGrid"
 import HeroBlock from "../components/common/HeroBlock"
+import Loader from "../components/common/Loader"
+
+import { fetchProjectsData } from "./api"
 
 export default function Page() {
+  const [galleryGridData, setGalleryGridData] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    fetchProjectsData()
+      .then(response => {
+        setGalleryGridData(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+      .finally(() => setIsLoading(false))
+  }, [])
+
+  if (isLoading) {
+    return <Loader />
+  }
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-between bg-slate-800 text-gray-300 p-5">
       <HeroBlock
@@ -10,7 +35,7 @@ export default function Page() {
         link="/"
         linkText="Contact Me"
       />
-     <GalleryGrid />
+      <GalleryGrid gridData={galleryGridData} />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { useEffect, useState } from "react"
 
@@ -6,7 +6,7 @@ import HeroBlock from "../components/common/HeroBlock"
 import ImageGrid from "../components/common/ImageGrid"
 import Loader from "../components/common/Loader"
 
-import { fetchProjectsData } from './api'
+import { fetchProjectsData } from "./api"
 
 export default function Page() {
   const [imageGridData, setImageGridData] = useState([])
