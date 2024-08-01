@@ -1,7 +1,7 @@
 const baseApiUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL
 
-export const fetchProjectData = async () => {
-  const apiUrl = `${baseApiUrl}/projects-images/get-all-projects-data/`
+export const fetchProjectData = async (slug) => {
+  const apiUrl = `${baseApiUrl}/projects/get-project-info/${slug}`
   const response = await fetch(apiUrl)
 
   if (!response.ok) {
