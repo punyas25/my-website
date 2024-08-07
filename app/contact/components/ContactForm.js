@@ -27,7 +27,6 @@ const ContactForm = () => {
           console.log(response);
           setSubmitSuccess(true)
           setIsLoading(false)
-
         })
         .catch(error => {
           console.log(error);
@@ -41,11 +40,11 @@ const ContactForm = () => {
     return <Loader />
   }
 
-  // fix spacing
   if (submitSuccess) {
     return (
-      <div className="w-4/6 my-10 prose" >
-        <h2 className="text-gray-300 mb-2">Form submitted successfully</h2>
+      <div className="w-4/6 my-10 prose text-center " >
+        <h2 className="text-gray-300 mb-6">Your message has been submitted successfully</h2>
+        <p className="text-gray-300"> I will get back to you soon</p>
       </div>
     )
   }
