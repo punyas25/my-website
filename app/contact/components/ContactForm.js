@@ -1,6 +1,56 @@
+"use client"
+
+import React, { useState, useEffect } from "react"
+
+import Loader from "../../components/common/Loader"
+
+import { saveSubmission } from "../api"
+
 const ContactForm = () => {
+  const [data, setData] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [submitSuccess, setSubmitSuccess] = useState(false)
+
+  const onSubmit = (formData) => {
+    let incomingData = {}
+    for (const [key, value] of formData) {
+      incomingData[key] = value
+    }
+    setData(incomingData)
+    setIsLoading(true)
+  }
+
+  useEffect(() => {
+    if (Object.keys(data).length) {
+      saveSubmission(data)
+        .then(response => {
+          console.log(response);
+          setSubmitSuccess(true)
+          setIsLoading(false)
+        })
+        .catch(error => {
+          console.log(error);
+        })
+      // .finally(() => setIsLoading(false))
+    }
+  }, [data])
+
+
+  if (isLoading) {
+    return <Loader />
+  }
+
+  if (submitSuccess) {
+    return (
+      <div className="w-4/6 my-10 prose text-center " >
+        <h2 className="text-gray-300 mb-6">Your message has been submitted successfully</h2>
+        <p className="text-gray-300"> I will get back to you soon</p>
+      </div>
+    )
+  }
+
   return (
-    <form className="w-4/6 my-10">
+    <form className="w-4/6 my-10" action={onSubmit}>
       <div className="pb-12">
         <div className="prose">
           <h1 className="text-gray-300 mb-2">Contact</h1>
@@ -11,10 +61,10 @@ const ContactForm = () => {
           <div className="sm:col-span-3">
             <div className="mt-1">
               <input
-                id="full-name"
-                name="full-name"
+                id="fullname"
+                name="fullname"
                 type="text"
-                autoComplete="full-name"
+                autoComplete="fullname"
                 placeholder="Full Name"
                 className="block w-full rounded-md shadow-sm ring-1 bg-transparent p-2 text-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6 ring-gray-300 focus:outline-none focus:ring-1 focus:ring-orange-700"
               />
