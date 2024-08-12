@@ -5,13 +5,15 @@ import { useEffect, useState } from "react"
 import HeroBlock from "../components/common/HeroBlock"
 import ImageGrid from "../components/common/ImageGrid"
 import Loader from "../components/common/Loader"
+import Error from "../components/common/Error"
 
 import { fetchProjectsData } from "./api"
 
 export default function Page() {
   const [imageGridData, setImageGridData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  // Add error state as well
+  const [errorState, setErrorState] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
     fetchProjectsData()
@@ -19,13 +21,20 @@ export default function Page() {
         setImageGridData(response)
       })
       .catch(error => {
-        console.log(error)
+        setErrorState(true)
+        setErrorMessage(error.message)
       })
-    .finally(() => setIsLoading(false))
+      .finally(() => setIsLoading(false))
   }, [])
 
   if (isLoading) {
     return <Loader />
+  }
+
+  if (errorState) {
+    return (
+      <Error errorMessage={errorMessage} />
+    )
   }
 
   return (
@@ -37,16 +46,6 @@ export default function Page() {
         linkText="Contact Me"
       />
       <ImageGrid gridData={imageGridData} />
-      <div>
-        <p>Credits for icon/assets used</p>
-        <a href="https://www.flaticon.com/free-icons/tangerine" title="tangerine icons">Tangerine icons created by Freepik - Flaticon</a>
-      </div>
-      <div>
-        <a href="https://iconscout.com/icons/looding" class="text-underline font-size-sm" target="_blank">Loading</a> by <a href="https://iconscout.com/contributors/zkyicon" class="text-underline font-size-sm" target="_blank">Zky Icon</a>
-      </div>
-      <div>
-        <a href="https://iconscout.com/icons/error" class="text-underline font-size-sm" target="_blank">Error</a> by <a href="https://iconscout.com/contributors/elegant-themes" class="text-underline font-size-sm" target="_blank">Elegant Themes</a>
-      </div>
     </div>
   );
 }
