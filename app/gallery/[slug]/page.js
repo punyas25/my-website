@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import Carousel from "../components/Carousel"
 import ProjectInfo from "../components/ProjectInfo"
 import Loader from "../../components/common/Loader"
+import Error from "../components/common/Error"
 
 import { fetchProjectData } from "../api"
 
@@ -14,6 +15,8 @@ export default function Page({ params }) {
   const [projectData, setProjectData] = useState([])
   const [carouselData, setCarouselData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const [errorState, setErrorState] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
     fetchProjectData(slug)
@@ -22,7 +25,8 @@ export default function Page({ params }) {
         setCarouselData(response[0].project_images)
       })
       .catch(error => {
-        console.log(error)
+        setErrorState(true)
+        setErrorMessage(error.message)
       })
       .finally(() => setIsLoading(false))
   }, [])
@@ -30,6 +34,12 @@ export default function Page({ params }) {
 
   if (isLoading) {
     return <Loader />
+  }
+
+  if (errorState) {
+    return (
+      <Error errorMessage={errorMessage} />
+    )
   }
 
   return (

@@ -8,7 +8,7 @@ import logoImage from "../../public/images/tangerine.png"
 export default function Page() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-between bg-slate-800 text-gray-300 p-5">
-      <div className="prose mx-auto my-20 mx-10 ">
+      <div className="prose mx-auto my-20">
         <h2 className="text-gray-300 mb-10">Credits for various assets used throughout the project</h2>
         <table class="table-auto w-full divide-y border divide-slate-500 border-separate rounded-md p-2 text-gray-300">
           <thead>

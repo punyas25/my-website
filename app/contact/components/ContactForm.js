@@ -3,12 +3,15 @@
 import React, { useState, useEffect } from "react"
 
 import Loader from "../../components/common/Loader"
+import Error from "../../components/common/Error"
 
 import { saveSubmission } from "../api"
 
 const ContactForm = () => {
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const [errorState, setErrorState] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const [submitSuccess, setSubmitSuccess] = useState(false)
 
   const onSubmit = (formData) => {
@@ -29,15 +32,22 @@ const ContactForm = () => {
           setIsLoading(false)
         })
         .catch(error => {
-          console.log(error);
+          setErrorState(true)
+          setErrorMessage(error.message)
         })
-      // .finally(() => setIsLoading(false))
+      .finally(() => setIsLoading(false))
     }
   }, [data])
 
 
   if (isLoading) {
     return <Loader />
+  }
+
+  if (errorState) {
+    return (
+      <Error errorMessage={errorMessage} />
+    )
   }
 
   if (submitSuccess) {

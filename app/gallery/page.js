@@ -5,12 +5,15 @@ import { useEffect, useState } from "react"
 import GalleryGrid from "./components/GalleryGrid"
 import HeroBlock from "../components/common/HeroBlock"
 import Loader from "../components/common/Loader"
+import Error from "../components/common/Error"
 
 import { fetchProjectsData } from "./api"
 
 export default function Page() {
   const [galleryGridData, setGalleryGridData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const [errorState, setErrorState] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
     fetchProjectsData()
@@ -18,13 +21,20 @@ export default function Page() {
         setGalleryGridData(response)
       })
       .catch(error => {
-        console.log(error)
+        setErrorState(true)
+        setErrorMessage(error.message)
       })
       .finally(() => setIsLoading(false))
   }, [])
 
   if (isLoading) {
     return <Loader />
+  }
+
+  if (errorState) {
+    return (
+      <Error errorMessage={errorMessage} />
+    )
   }
 
   return (
