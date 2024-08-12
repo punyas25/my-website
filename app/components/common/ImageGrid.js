@@ -16,7 +16,7 @@ const ImageGrid = ({ gridData }) => {
                 className="p-4 mb-6 transition duration-300 group transform hover:-translate-y-2 rounded-xl cursor-pointer"
               >
                 <Link
-                  href={`gallery/${x.project_slug}`}
+                  href={x.external_link}
                   className="absolute opacity-0 top-0 right-0 left-0 bottom-0"
                 />
                 <div className="relative mb-4 rounded-2xl">
@@ -24,16 +24,16 @@ const ImageGrid = ({ gridData }) => {
                     width={400}
                     height={400}
                     className="max-h-80 rounded-2xl w-full object-cover transition-transform duration-300 transform group-hover:scale-105"
-                    src={imageUrl + x.cover_image.url}
-                    alt={`${x.project_name} Cover image`}
+                    src={imageUrl + x.image_src.url}
+                    alt={x.image_title}
                   />
                   <Link
-                    className="flex justify-center items-center bg-orange-800 bg-opacity-20 absolute top-0 left-0 w-full h-full text-white rounded-2xl opacity-0 transition-all duration-300 transform group-hover:scale-105 text-xl group-hover:opacity-100"
-                    href={`gallery/${x.project_slug}`}
+                    className="flex justify-center items-center bg-orange-800 bg-opacity-20 absolute top-0 left-0 w-full h-full p-2 text-white rounded-2xl opacity-0 transition-all duration-300 transform group-hover:scale-105 text-xl group-hover:opacity-100"
+                    href={x.external_link}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {x.project_name}
+                    {x.image_title}
                   </Link>
                 </div>
               </article>

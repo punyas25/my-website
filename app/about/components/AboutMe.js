@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 
 import profileImg from "../../../public/images/profile.jpg"
 
@@ -21,7 +22,7 @@ const AboutMe = () => {
         <div>
           <ul>
             <li>
-              Instagram: @doodlesbypost
+              Instagram: <Link href="https://www.instagram.com/doodlesbypost/" className="text-orange-600	no-underline" target="_blank">@doodlesbypost</Link>
             </li>
             <li>
               Email: email@example.com
@@ -33,7 +34,7 @@ const AboutMe = () => {
               Degree: Master
             </li>
             <li>
-              LinkedIn: linkedin/link
+              LinkedIn: <Link href="https://www.linkedin.com/in/punyashree-shetty-862029102/" className="text-orange-600	no-underline" target="_blank">punyashree-shetty</Link>
             </li>
           </ul>
         </div>
