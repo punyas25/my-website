@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import Carousel from "../components/Carousel"
 import ProjectInfo from "../components/ProjectInfo"
 import Loader from "../../components/common/Loader"
-import Error from "../components/common/Error"
+import Error from "../../components/common/Error"
 
 import { fetchProjectData } from "../api"
 
